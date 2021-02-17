@@ -10,8 +10,6 @@ const passport = require('passport');
 
 const app = express();
 
-app.enable('trust proxy');
-
 if (keys.NODE_ENV === 'development') {
   const morgan = require('morgan');
   app.use(morgan('dev'));
