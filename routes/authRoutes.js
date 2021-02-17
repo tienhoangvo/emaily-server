@@ -12,10 +12,7 @@ authRouter.get(
 
 authRouter.get(
   '/google/callback',
-  passport.authenticate('google', {
-    failureRedirect: '/login',
-    successRedirect: '/',
-  })
+  passport.authenticate('google')
 );
 
 authRouter.get('/api/logout', (req, res) => {
