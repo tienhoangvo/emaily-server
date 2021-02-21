@@ -12,20 +12,15 @@ authRouter.get(
 
 authRouter.get(
   '/google/callback',
-  passport.authenticate('google')
-);
-
-authRouter.get('/api/logout', (req, res) => {
-  req.logout();
-  res.status(200).json(req.user);
-});
-
-authRouter.get(
-  '/api/current_user',
+  passport.authenticate('google'),
   (req, res) => {
-    console.log('********cookies', req.session);
-    res.status(200).json(req.user);
+    res.redirect('/surveys');
   }
 );
+
+authRouter.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
 
 module.exports = authRouter;

@@ -36,7 +36,11 @@ passport.use(
       try {
         const user = await User.findOneOrCreate({
           googleId: profile.id,
+          name: profile._json.name,
+          email: profile._json.email,
         });
+
+        console.log({ profile });
 
         done(null, user);
       } catch (err) {

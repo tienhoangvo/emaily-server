@@ -8,6 +8,14 @@ const prod = {
   MONGODB_PASSWORD: process.env.MONGODB_PASSWORD,
   MONGODB_DBURI: process.env.MONGODB_DBURI,
   COOKIE_KEY: process.env.COOKIE_KEY,
+  STRIPE_PUBLISHABLE_KEY:
+    process.env.STRIPE_PUBLISHABLE_KEY,
+  STRIPE_SECRET_KEY:
+    process.env.STRIPE_SECRET_KEY,
+  STRIPE_SUCCESS_URL:
+    process.env.STRIPE_SUCCESS_URL,
+  STRIPE_CANCEL_URL:
+    process.env.STRIPE_CANCEL_URL,
 };
 
 module.exports = prod;
