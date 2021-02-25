@@ -15,7 +15,9 @@ import * as actions from '../actions';
 import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
-const SurveyNew = () => <h2>ServeyNew</h2>;
+import SurveyNew from './surveys/SurveyNew';
+import { SurveyFormProvider } from '../contexts/SurveyForm';
+import { SurveysProvider } from '../contexts/Surveys';
 const stripePromise = loadStripe(
   process.env.REACT_APP_STRIPE_KEY
 );
@@ -23,7 +25,7 @@ const stripePromise = loadStripe(
 const App = (props) => {
   useEffect(() => {
     props.fetchUser();
-  }, []);
+  }, [props]);
 
   return (
     <Elements stripe={stripePromise}>
@@ -33,8 +35,15 @@ const App = (props) => {
             <div>
               <Header />
               <Switch>
+                <Route path="/surveys/new">
+                  <SurveyFormProvider>
+                    <SurveyNew />
+                  </SurveyFormProvider>
+                </Route>
                 <Route path="/surveys">
-                  <Dashboard />
+                  <SurveysProvider>
+                    <Dashboard />
+                  </SurveysProvider>
                 </Route>
                 <Route path="/">
                   <Landing />

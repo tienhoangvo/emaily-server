@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const path = require('path');
 
 const keys = require('./config/keys');
 require('./services/mongoose');
@@ -10,7 +11,7 @@ const authRouter = require('./routes/authRoutes');
 
 const userRouter = require('./routes/userRoutes');
 const billingRouter = require('./routes/billingRoutes');
-
+const surveyRouter = require('./routes/surveyRoutes');
 const app = express();
 
 if (keys.NODE_ENV === 'development') {
@@ -30,11 +31,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-const path = require('path');
-
 app.use('/auth', authRouter);
 app.use('/api/users', userRouter);
 app.use('/api/billings', billingRouter);
+app.use('/api/surveys', surveyRouter);
 
 if (process.env.NODE_ENV === 'production') {
   //Serve up production assets .js .css files
