@@ -16,7 +16,7 @@ const prod = {
     process.env.STRIPE_SUCCESS_URL,
   STRIPE_CANCEL_URL:
     process.env.STRIPE_CANCEL_URL,
-  SENDGRID_KEY: process.env.STRIPE_SECRET_KEY,
+  SENDGRID_KEY: process.env.SENDGRID_KEY,
   SENDGRID_SENDER: process.env.SENDGRID_SENDER,
   REDIRECT_DOMAIN: process.env.REDIRECT_DOMAIN,
 };
